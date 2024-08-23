@@ -3,8 +3,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 from config.env import envConfig
-
-engine = create_engine(envConfig.DATABASE_URL)
+DATABASE_URL=f"postgresql+psycopg2://{envConfig.POSTGRES_USER}:{envConfig.POSTGRES_PASSWORD}@{envConfig.POSTGRES_HOST}:{envConfig.POSTGRES_PORT}/{envConfig.POSTGRES_DB}"
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
