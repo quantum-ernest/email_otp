@@ -3,31 +3,32 @@ from schemas.users import UserSchemaIn
 from sqlalchemy.orm import Session
 from pydantic import EmailStr
 from config.database import Base
+from typing import List
 
 
 class UserModel(Base):
-    __tablename__ = 'user'
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String, unique=True, nullable=False)
 
     @classmethod
-    def create_user(cls, user: UserSchemaIn, db: Session):
-        user = cls(**user.dict())
+    def create(cls, user: UserSchemaIn, db: Session) -> "UserModel":
+        user = cls(**user.model_dump())
         db.add(user)
         db.commit()
         db.refresh(user)
         return user
 
     @classmethod
-    def get_all_users(cls, db: Session):
-        return db.query(cls).order_by(cls.id.desc()).all()
+    def get_all(cls, db: Session) -> List["UserModel"]:
+        return db.query(cls).order_by(cls.id).all()
 
     @classmethod
-    def get_user_by_email(cls, email: EmailStr, db: Session):
+    def get_by_email(cls, email: EmailStr, db: Session) -> "UserModel":
         return db.query(cls).filter_by(email=email).first()
 
     @classmethod
-    def check_user_by_email(cls, email: str, db: Session):
-        user = cls.get_user_by_email(email, db)
+    def validate_by_email(cls, email: str, db: Session) -> bool:
+        user = cls.get_by_email(email, db)
         return True if user else False
