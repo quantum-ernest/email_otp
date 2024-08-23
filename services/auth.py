@@ -19,7 +19,9 @@ mail_service = MailService()
 class AuthService:
     """Service class handling authentication-related operations."""
 
-    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+    pwd_context = CryptContext(
+        schemes=["sha256_crypt"], sha256_crypt__default_rounds=66677
+    )
 
     @classmethod
     def hash_password(cls, password: str) -> str:
