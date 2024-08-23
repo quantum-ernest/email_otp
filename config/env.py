@@ -1,6 +1,7 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import EmailStr
 from typing import Optional
+
+from pydantic import EmailStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class EnvConfig(BaseSettings):

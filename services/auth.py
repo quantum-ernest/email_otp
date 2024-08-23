@@ -1,12 +1,13 @@
 import redis
-from config.env import envConfig
 from fastapi import HTTPException, status
 from fastapi_mail import MessageSchema
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import EmailStr
-from services.mail import MailService
+
+from config.env import envConfig
 from schemas.auth import OtpLoginSchemaIn
+from services.mail import MailService
 from utils.mail_templates import login_otp_template
 from utils.random_otp import generate_otp
 

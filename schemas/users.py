@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-from pydantic import EmailStr
+from pydantic import BaseModel, EmailStr
 
 
 class UserSchemaIn(BaseModel):
@@ -8,5 +7,3 @@ class UserSchemaIn(BaseModel):
 
 class UserSchemaOut(UserSchemaIn):
     id: int
-
-

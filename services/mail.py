@@ -21,9 +21,10 @@ Usage:
     - Call the send_mail method with the appropriate message schema to send an email.
 """
 
-from config.env import envConfig
 from fastapi import HTTPException, status
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema
+
+from config.env import envConfig
 
 
 class MailService:

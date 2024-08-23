@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
 
+from config.database import get_db_session
+from models.users import UserModel
 from schemas.auth import (
     OtpGenerateSchemaIn,
     OtpGenerateSchemaOut,
     OtpLoginSchemaIn,
     OtpLoginSchemaOut,
 )
-from sqlalchemy.orm import Session
-from config.database import get_db_session
-from models.users import UserModel
 from schemas.users import UserSchemaIn
 from services.auth import AuthService
 

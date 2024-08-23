@@ -26,13 +26,14 @@ Exceptions:
 """
 
 from typing import List
+
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import EmailStr
-from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 
-from schemas.users import UserSchemaOut, UserSchemaIn
-from models.users import UserModel
 from config.database import get_db_session
+from models.users import UserModel
+from schemas.users import UserSchemaIn, UserSchemaOut
 
 router = APIRouter()
 

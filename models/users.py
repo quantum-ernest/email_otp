@@ -1,9 +1,11 @@
-from sqlalchemy import Column, Integer, String
-from schemas.users import UserSchemaIn
-from sqlalchemy.orm import Session
-from pydantic import EmailStr
-from config.database import Base
 from typing import List
+
+from pydantic import EmailStr
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import Session
+
+from config.database import Base
+from schemas.users import UserSchemaIn
 
 
 class UserModel(Base):
