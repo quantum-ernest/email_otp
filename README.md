@@ -161,7 +161,7 @@ Setup [Environment Configuration](#environment-configuration)
 
 ```bash
 .
-├── app
+├── email_otp
 │   ├── controllers
 │   ├── models
 │   ├── schemas
