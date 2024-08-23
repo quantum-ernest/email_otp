@@ -4,8 +4,12 @@ from typing import Optional
 
 
 class EnvConfig(BaseSettings):
-    model_config = SettingsConfigDict(env_file='./.env', env_file_encoding='utf-8')
-    DATABASE_URL: str
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    POSTGRES_HOST: str
+    POSTGRES_PORT: str
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_DB: str
     AUTH_SECRETE_KEY: str
     AUTH_ALGORITHM: str
     MAIL_USERNAME: str
@@ -18,7 +22,7 @@ class EnvConfig(BaseSettings):
     MAIL_SSL_TLS: bool | None = False
     MAIL_USE_CREDENTIALS: bool | None = True
     MAIL_VALIDATE_CERTS: bool | None = True
-    REDIS_HOST: str | None = 'localhost'
+    REDIS_HOST: str | None = "redis"
     REDIS_PORT: int | None = 6379
 
 
