@@ -12,7 +12,7 @@ class EnvConfig(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
     AUTH_SECRETE_KEY: str
-    AUTH_ALGORITHM: str
+    AUTH_ALGORITHM: str | None = "HS256"
     MAIL_USERNAME: str
     MAIL_PASSWORD: str
     MAIL_FROM_NAME: Optional[str] = None

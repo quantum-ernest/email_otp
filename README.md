@@ -21,9 +21,9 @@ This project is a simple OTP (One-Time Password) authentication system using Fas
 - Redis
 
 ## Start application with Docker Compose
-Setup [Environment Configuration](#environment-configuration)
+1. Setup [Environment Configuration](#environment-configuration)
 
-1. **Build the image**
+2. **Build the image**
 
    ```bash
    docker build -t app/otp .
@@ -90,8 +90,8 @@ Setup [Environment Configuration](#environment-configuration)
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
-    AUTH_SECRETE_KEY: str
-    AUTH_ALGORITHM: str
+    AUTH_SECRETE_KEY: str # import secrets; print(secrets.token_hex(32));
+    AUTH_ALGORITHM: str | None = "HS256"
     MAIL_USERNAME: str
     MAIL_PASSWORD: str
     MAIL_FROM_NAME: Optional[str] = None
