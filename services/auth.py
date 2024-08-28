@@ -2,7 +2,6 @@ import redis
 from fastapi import HTTPException, status
 from fastapi_mail import MessageSchema
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from pydantic import EmailStr
 
 from config.env import envConfig
@@ -19,37 +18,6 @@ mail_service = MailService()
 
 class AuthService:
     """Service class handling authentication-related operations."""
-
-    pwd_context = CryptContext(
-        schemes=["sha256_crypt"], sha256_crypt__default_rounds=66677
-    )
-
-    @classmethod
-    def hash_password(cls, password: str) -> str:
-        """
-        Hashes a plain text password using bcrypt.
-
-        Args:
-            password (str): The plain text password.
-
-        Returns:
-            str: The hashed password.
-        """
-        return cls.pwd_context.hash(password)
-
-    @classmethod
-    def verify_password(cls, plain_password: str, hashed_password: str) -> bool:
-        """
-        Verifies a plain text password against a hashed password.
-
-        Args:
-            plain_password (str): The plain text password.
-            hashed_password (str): The hashed password.
-
-        Returns:
-            bool: True if the password matches, False otherwise.
-        """
-        return cls.pwd_context.verify(plain_password, hashed_password)
 
     @classmethod
     def create_access_token(cls, data: dict) -> str:
